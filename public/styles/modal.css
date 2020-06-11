@@ -1,5 +1,6 @@
 #modal {
-    background-color: #0E0A14fa;
+    background-color: #0e0a14ef;
+    /* background-color: #eff3f3af; */
 
     height: 100vh;
     width: 100vw;
@@ -8,17 +9,23 @@
     
     top: 0;
 
+    
+
     display: flex;
     justify-content: center;
     align-items: center;
 
     transition: 400ms;
+
+    
 }
 
 #modal .content{
-    color: white;
+    color:white;
 
     width: 420px;
+
+    
 }
 
 #modal .header {
@@ -37,8 +44,9 @@
 
     display: flex;
 
-    font-size: 0.01px;
-
+    font-size: 0.02px;
+ 
+    
 }
 
 #modal .header h1{
@@ -46,6 +54,5 @@
 
     font-size: 36px;
     line-height: 42px;
-
-   
 }
+
