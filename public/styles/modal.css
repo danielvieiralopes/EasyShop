@@ -1,58 +1,42 @@
-#modal {
-    background-color: #0e0a14ef;
-    /* background-color: #eff3f3af; */
+/* geral */
 
-    height: 100vh;
-    width: 100vw;
-
-    position: fixed;
-    
-    top: 0;
-
-    
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: 400ms;
-
-    
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: #323232;
+    border: none;
 }
 
-#modal .content{
-    color:white;
-
-    width: 420px;
-
-    
+input, label {
+    display: block;
+    width: 100%;
 }
 
-#modal .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 48px;
+input:focus, label:focus{
+  outline: none;  
 }
 
-#modal .header a {
-    background-image: url("/assets/x.svg");
-
-    width: 20px;
-    height: 20px;
-
-    display: flex;
-
-    font-size: 0.02px;
- 
-    
+a {
+    color: #E60084;
 }
 
-#modal .header h1{
-    color: white;
-
-    font-size: 36px;
-    line-height: 42px;
+body {
+    padding-top: 5vh; /* view height -> 5% da tela */
+    background-image: url('/assets/registroBlue.svg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
+/* form */
+
+#main-container{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 25px;
+}
