@@ -19,24 +19,99 @@ input:focus, label:focus{
 }
 
 a {
-    color: #E60084;
+    color: #0c070a;
 }
 
 body {
     padding-top: 5vh; /* view height -> 5% da tela */
-    background-image: url('/assets/registroBlue.svg');
+    background-image: url('/assets/form.svg');
     background-size: cover;
-    width: 100%;
-    height: 100%;
+    background-position-y: -150px ;
 }
 
 /* form */
 
 #main-container{
-    width: 500px;
+    width: 700px;
+    margin-top: 200px;
     margin-left: auto;
-    margin-right: auto;
-    background-color: #FFF;
+    margin-right: 500px;
+    background-color: rgb(151, 134, 247);
     border-radius: 10px;
     padding: 25px;
+}
+
+#main-container h1{
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.9rem; /* adapta ao elemento root*/
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.full-box{
+    flex: 1 1 100%;
+    position: relative;
+}
+
+.half-box{
+    flex: 1 1 45%;
+    position: relative;
+}
+
+.spacing {
+    margin-right: 2.5%;
+}
+
+label{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+input{
+    border-bottom: 2px solid #323232;
+    padding: 10px;
+    font-size: .9rem;
+    margin-bottom: 40px;
+}
+
+input:focus{
+    border-color: #663ae0;
+}
+
+input[type="submit"] {
+    background-color:#a7a9fc;
+    color: #FFF;
+    border: none;
+    border-radius: 20px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+#agreement{
+    margin-right: 5px;
+}
+
+#agreement, #agreement-label{
+    display: inline-block;
+    width: auto;
+    font-size: 15px;
+}
+
+/* validacoes */
+
+.error-validation {
+    color: #ff1a1a;
+    position: absolute;
+    top: 57px;
+    font-size: .8rem;
+}
+
+.template {
+    display: none;
 }
