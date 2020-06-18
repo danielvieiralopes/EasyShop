@@ -24,13 +24,48 @@ class Validator {
                 //verifica se a validacao atual existe no input
                 if(input.getAttribute(this.validations[i]) != null) {
                   
+                    // limpando a string para virar um metodo 
+                    let method = this.validations[i].replace('data-','').replace('-','');
+
+                    // valor do input 
+                    let value = input.getAttribute(this.validations[i]);
+
+                    // invocar o metodo 
+                    this[method](input, value);
                 }
             }
             
-        }, this)
+        }, this);
     
     }
-    
+
+
+    // verifica se um input tem um numero minimo de caracteres
+
+    minlength(input, minValue){
+
+       let inputLength = input.value.length;
+
+       let errorMessage = `O campo precisa ter pelo menos ${minValue} caracteres`;
+
+       if(inputLength < minValue){
+           this.printMessage(input, errorMessage);
+       }
+    }
+
+    // metodo para imprimir mensagens de erro na tela 
+    printMessage(input, msg){
+
+        let template = document.querySelector('.error-validation').cloneNode(true);
+
+        template.textContent = msg;
+
+        let inputParent = input.parentNode;
+
+        template.classList.remove('template');
+
+        inputParent.appendChild(template);
+    }
 
 }
 

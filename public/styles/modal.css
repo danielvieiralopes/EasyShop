@@ -24,7 +24,7 @@ a {
 
 body {
     padding-top: 5vh; /* view height -> 5% da tela */
-    background-image: url('/assets/form.svg');
+    background-image: url('/assets/bg1.jpeg');
     background-size: cover;
     background-position-y: -150px ;
 }
@@ -32,10 +32,10 @@ body {
 /* form */
 
 #main-container{
-    width: 700px;
-    margin-top: 200px;
+    width: 600px;
+    margin-top: 100px;
     margin-left: auto;
-    margin-right: 500px;
+    margin-right: auto;
     background-color: rgb(164, 212, 252);
     border-radius: 10px;
     padding: 25px;
@@ -44,7 +44,7 @@ body {
 #main-container h1{
     text-align: center;
     margin-bottom: 25px;
-    font-size: 1.9rem; /* adapta ao elemento root*/
+    font-size: 1.6rem; /* adapta ao elemento root*/
 }
 
 form {
@@ -70,6 +70,7 @@ form {
 label{
     font-weight: bold;
     font-size: 1.1rem;
+    
 }
 
 input{
@@ -108,8 +109,8 @@ input[type="submit"] {
 .error-validation {
     color: #ff1a1a;
     position: absolute;
-    top: 57px;
-    font-size: .8rem;
+    top: 65px;
+    font-size: .9rem;
 }
 
 .template {
