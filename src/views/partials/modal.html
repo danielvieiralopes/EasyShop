@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/public/styles/modal.css">
-</head>
-<body>
+        <link rel="stylesheet" type="text/css" href="/public/styles/modal.css">
+    </head>
+    <body>
 
-<div id="main-container">
+        <div id="main-container">
 
-    <h1>Cadastre-se e facilite o seu negócio!</h1>
-    <form id="register-form">
-        <div class="full-box">
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" placeholder="Digite seu e-mail" data-min-length="3">
+            <h1>Cadastre-se e facilite o seu negócio!</h1>
+            <form id="register-form">
+                <div class="full-box">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" placeholder="Digite seu e-mail" data-min-length="3" data-required data-email-validate>
+                </div>
+                <div class="half-box spacing">
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="name" placeholder="Digite o seu nome" data-max-length="16">
+                </div>
+                <div class="half-box">
+                    <label for="companyName">Empresa</label>
+                    <input type="text" name="companyName" id="companyName" placeholder="Digite o nome da empresa">
+                </div>
+                <div class="half-box spacing">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password" placeholder="Digite a sua senha">
+                </div>
+                <div class="half-box">
+                    <label for="passconfirmation">Confirme sua senha</label>
+                    <input type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme a sua senha">
+                </div>
+                <div class="full-box">
+                    <input type="checkbox" name="agreement" id="agreement">
+                    <label for="agreement" id="agreement-label">Eu li e aceito os
+                        <a href="#">termos de uso</a>
+                    </label>
+                </div>
+                <div class="full-box">
+                    <input type="submit" id="btn-submit" value="Registrar">
+                </div>
+            </form>
         </div>
-        <div class="half-box spacing">
-            <label for="name">Nome</label>
-            <input type="text" name="name" id="name" placeholder="Digite o seu nome">
-        </div>
-        <div class="half-box">
-            <label for="companyName">Empresa</label>
-            <input type="text" name="companyName" id="companyName" placeholder="Digite o nome da empresa">
-        </div>
-        <div class="half-box spacing">
-            <label for="password">Senha</label>
-            <input type="password" name="password" id="password" placeholder="Digite a sua senha">
-        </div>
-        <div class="half-box">
-            <label for="passconfirmation">Confirme sua senha</label>
-            <input type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme a sua senha">
-        </div>
-        <div class="full-box">
-            <input type="checkbox" name="agreement" id="agreement">
-            <label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso</a></label>
-        </div>
-        <div class="full-box">
-            <input type="submit"  id="btn-submit" value="Registrar">
-        </div>
-    </form>
-</div>
-    <p class="error-validation template"></p>
-    <script src="/scripts/modal.js"></script>
-</body>
+        <p class="error-validation template"></p>
+        <script src="/scripts/modal.js"></script>
+    </body>
 </html>

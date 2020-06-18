@@ -2,30 +2,39 @@ class Validator {
 
     constructor() {
         this.validations = [
+            'data-required',
             'data-min-length',
+            'data-max-length',
+            'data-email-validate',
         ]
     }
 
     // iniciar a validacao de todos os campos
-    validate(form){
+    validate(form) {
+
+        // resgata todas as validacoes
+        let currentValidations = document.querySelectorAll('form .error-validation');
+
+        if (currentValidations.length > 0) {
+            this.cleanValidations(currentValidations);
+        }
+
         // pegar os inputs
         let inputs = form.getElementsByTagName('input');
-
-     
 
         //transformo uma HTMLCollection -> array
         let inputsArray = [...inputs];
 
         // loop nos inputs e validacao mediante ao que for encontrado
-        inputsArray.forEach(function(input){
-            
+        inputsArray.forEach(function (input) {
+
             // loop em todas as validacoes existentes
-            for(let i = 0; this.validations.length > i; i++){
+            for (let i = 0; this.validations.length > i; i++) {
                 //verifica se a validacao atual existe no input
-                if(input.getAttribute(this.validations[i]) != null) {
-                  
+                if (input.getAttribute(this.validations[i]) != null) {
+
                     // limpando a string para virar um metodo 
-                    let method = this.validations[i].replace('data-','').replace('-','');
+                    let method = this.validations[i].replace('data-', '').replace('-', '');
 
                     // valor do input 
                     let value = input.getAttribute(this.validations[i]);
@@ -34,37 +43,89 @@ class Validator {
                     this[method](input, value);
                 }
             }
-            
+
         }, this);
-    
+
     }
 
 
     // verifica se um input tem um numero minimo de caracteres
 
-    minlength(input, minValue){
+    minlength(input, minValue) {
 
-       let inputLength = input.value.length;
+        let inputLength = input.value.length;
 
-       let errorMessage = `O campo precisa ter pelo menos ${minValue} caracteres`;
+        let errorMessage = `O campo precisa ter pelo menos ${minValue} caracteres`;
 
-       if(inputLength < minValue){
-           this.printMessage(input, errorMessage);
-       }
+        if (inputLength < minValue) {
+            this.printMessage(input, errorMessage);
+        }
+    }
+
+    // verifica se um input passou do limite de caracteres 
+    maxlength(input, maxValue) {
+
+        let inputLength = input.value.length;
+
+        let errorMessage = `O campo precisa ter menos que ${maxValue} caracteres`;
+
+        if (inputLength > maxValue) {
+            this.printMessage(input, errorMessage);
+        }
+
+    }
+
+    // valida emails
+    emailvalidate(input) {
+
+        // email@email.com -> email@email.com.br
+        let re = /\S+@\S+\.\S+/;
+
+        let email = input.value; 
+
+        let errorMessage = `Insira um e-mail válido: example@example.com`
+
+        if(!re.test(email)) {
+            this.printMessage(input, errorMessage);
+        }
     }
 
     // metodo para imprimir mensagens de erro na tela 
-    printMessage(input, msg){
+    printMessage(input, msg) {
 
-        let template = document.querySelector('.error-validation').cloneNode(true);
+        // quantidade de erros 
+        let errorsQty = input.parentNode.querySelector('.error-validation');
 
-        template.textContent = msg;
 
-        let inputParent = input.parentNode;
+        if (errorsQty === null) {
+            let template = document.querySelector('.error-validation').cloneNode(true);
 
-        template.classList.remove('template');
+            template.textContent = msg;
 
-        inputParent.appendChild(template);
+            let inputParent = input.parentNode;
+
+            template.classList.remove('template');
+
+            inputParent.appendChild(template);
+        }
+
+    }
+
+    // verifica se o input e requerido 
+    required(input) {
+
+        let inputValue = input.value;
+
+        if (inputValue === '') {
+            let errorMessage = `Este campo é obrigatório`;
+
+            this.printMessage(input, errorMessage);
+        }
+    }
+
+    // limpa as validacoes da tela 
+    cleanValidations(validations) {
+        validations.forEach(el => el.remove());
     }
 
 }
@@ -75,7 +136,7 @@ let submit = document.getElementById("btn-submit");
 let validator = new Validator();
 
 // evento que dispara as validacoes 
-submit.addEventListener('click', function(e) {
+submit.addEventListener('click', function (e) {
 
     e.preventDefault();
 
