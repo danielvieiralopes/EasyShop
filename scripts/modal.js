@@ -6,6 +6,9 @@ class Validator {
             'data-min-length',
             'data-max-length',
             'data-email-validate',
+            'data-only-letters',
+            'data-equal',
+            'data-password-validate',
         ]
     }
 
@@ -90,8 +93,71 @@ class Validator {
         }
     }
 
-    // metodo para imprimir mensagens de erro na tela 
-    printMessage(input, msg) {
+    // valida se o campo tem apenas letras 
+    onlyletters(input) {
+
+        let re = /^[A-Za-z]+$/;
+
+        let inputValue = input.value;
+
+        let errorMessage = `Este campo não aceita números nem caracteres especiais`;
+
+        if(!re.test(inputValue)) {
+            this.printMessage(input, errorMessage);
+        }
+    }
+
+    // verifica se o input e requerido 
+    required(input) {
+
+        let inputValue = input.value;
+
+        if (inputValue === '') {
+            let errorMessage = `Este campo é obrigatório`;
+
+            this.printMessage(input, errorMessage);
+        }
+    }
+
+    // verifica se dois campos são iguais
+    equal(input, inputName){
+
+        let inputToCompare = document.getElementsByName(inputName)[0];
+
+        let errorMessage = `Este campo precisa estar igual ao ${inputName}`;
+
+        if(input.value != inputToCompare.value) {
+            this.printMessage(input, errorMessage);
+        }
+    }
+
+    // valida o campo de senha 
+    passwordvalidate(input) {
+
+        // explodir string em uma array
+        let charArr = input.value.split("");
+
+        let uppercases = 0;
+        let numbers = 0;
+
+        for(let i = 0; charArr.length > i; i++){
+            if(charArr[i] === charArr[i].toUpperCase() && isNaN(parseInt(charArr[i]))) {
+                uppercases++;
+            } else if(!isNaN(parseInt(charArr[i]))) {
+                numbers++;
+            }
+        }
+
+        if(uppercases === 0 || numbers === 0) {
+            let errorMessage = `A senha precisa de um caractere maiúsculo e um número`;
+
+            this.printMessage(input, errorMessage);
+        }
+
+    }
+
+      // metodo para imprimir mensagens de erro na tela 
+      printMessage(input, msg) {
 
         // quantidade de erros 
         let errorsQty = input.parentNode.querySelector('.error-validation');
@@ -109,18 +175,6 @@ class Validator {
             inputParent.appendChild(template);
         }
 
-    }
-
-    // verifica se o input e requerido 
-    required(input) {
-
-        let inputValue = input.value;
-
-        if (inputValue === '') {
-            let errorMessage = `Este campo é obrigatório`;
-
-            this.printMessage(input, errorMessage);
-        }
     }
 
     // limpa as validacoes da tela 
